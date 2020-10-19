@@ -1,0 +1,83 @@
+@import '~sass/variables.scss';
+#view-bids{
+    height: 100%;
+    width: 100%;
+
+    .navbar {
+        width: 100%;
+        height: 70px;
+        background-color: #2E6CBC;
+
+        .back-btn, .back-btn:hover {
+            color:white !important;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .page-title {
+        color: white;
+        background-image: linear-gradient(to right, #FF9300, #FE8200);
+        padding: 5px 20px;
+        font-size: 15px;
+    }
+
+    .content {
+        width: 100%;
+        height: calc(100% - 102px);
+        position: relative;
+        overflow-y: auto;
+
+        .bids {
+
+            .waiting-container {
+                display: flex;
+                margin-top: 80px;
+                padding: 0 50px;
+
+                .icon {
+
+                    img {
+                        width: 65px;
+                    }
+                }
+
+                .detail {
+                    padding: 20px 30px 50px 30px;
+
+                    h3 {
+                        color: black !important;
+                        font-size: 20px;
+                        font-weight: 700;
+                    }
+
+                    p {
+                        color: #2E6CBC !important;
+                        line-height: 16px;
+                    }
+                }
+            }
+
+            .actions {
+                width: 80%;
+                margin: 0 10%;
+                height: 70px;
+                text-align: center;
+
+                button {
+                    color: white;
+                    width: 170px;
+                    height: 40px;
+                    border-radius: 100px;
+                    background-image: linear-gradient(to right, #FF9300, #FE8200);
+                    border: none;
+                    outline: none;
+                    transition: 0.3s;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+}

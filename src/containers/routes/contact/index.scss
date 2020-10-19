@@ -1,0 +1,83 @@
+@import '~sass/variables.scss';
+#contact{
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    .navbar {
+        width: 100%;
+        height: 70px;
+        background-color: #2E6CBC;
+
+        .back-btn, .back-btn:hover {
+            color:white !important;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .description {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .page-title {
+        color: white;
+        background-image: linear-gradient(to right, #FF9300, #FE8200);
+        padding: 5px 20px;
+        font-size: 15px;
+    }
+
+    .content {
+        width: 100%;
+        height: calc(100% - 102px);
+        position: relative;
+        padding: 20px 40px;
+
+        .form-group {
+            textarea {
+                width: 100%;
+                resize: none;
+                outline: none;
+                border-style: solid;
+                height: 200px;
+                padding: 10px;
+                border-radius: 20px;
+                border-color: rgba(89, 89, 89, 0.314);
+            }
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 180px;
+
+            button {
+                color: white;
+                width: 170px;
+                height: 40px;
+                border-radius: 100px;
+                background-image: linear-gradient(to right, #FF9300, #FE8200);
+                border: none;
+                outline: none;
+                transition: 0.3s;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px){
+    #contact {
+        .content {
+            .actions {
+                margin-top: 100px;
+                button {
+                    width: 110px;
+                }
+            }
+        }
+    }
+}

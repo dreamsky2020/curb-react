@@ -1,0 +1,55 @@
+@import '~sass/variables.scss';
+#feature-shoes{
+    .shoes{
+        .shoes-item{
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            border: 1px solid $border-color;
+            .photo{
+                position: relative;
+                width: 100%;
+                background-color: $second-bg-color;
+                overflow: hidden;
+                @media screen and(max-width: 500px){
+                    .mask{
+                        display: none;
+                    }
+                }
+
+                img {
+                    width: 100%;
+                    transition: transform .5s;
+                }
+                .mask{
+                    position: absolute;
+                    left: 50%; 
+                    top: 50%;
+                    width: 0px;
+                    height: 0px;
+                    transform: translate(-50%, -50%);
+                    background-color: rgba($color: #fff, $alpha: 0.1);
+                    transition: all;
+                    transition-duration: 0.5s;
+                }
+            }
+            &:hover{
+                .name{
+                    color: $primary-color !important;
+                }
+                .photo{
+                    img{
+                        transform: scale(1.2);
+                        transition: transform .5s;
+                    }
+                    .mask{
+                        width: 100%;
+                        height: 100%;
+                        transition: all;
+                        transition-duration: 0.5s;
+                    }
+                }
+            }
+        }
+    }
+}

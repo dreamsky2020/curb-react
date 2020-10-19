@@ -1,0 +1,74 @@
+@import '~sass/variables.scss';
+#header{
+    position: fixed;
+    top: 0;
+    left: 0; 
+    right: 0;
+    height: 100px;
+    background-color: white;
+    z-index: 10000;
+    
+    &.show{
+        background-color: white;
+        height: 80px;
+        transition: all;
+        transition-duration: 0.3s;
+        box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        .menu{
+            line-height: 80px;
+        }
+    }
+
+    &.hide{
+        background-color: rgba(255, 255, 255, 0);
+        height: 100px;
+        transition: all;
+        transition-duration: 0.3s;
+        box-shadow: none;
+    }
+
+    .logo{
+        img{
+            height: 80px;
+        }
+    }
+
+    .menu{
+        line-height: 100px;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        .menu-item{
+            color: $text-color;
+            margin-left: 2rem;
+            line-height: 1rem;
+            cursor: pointer;
+        }
+
+        .active{
+            color: $primary-color
+        }
+    }
+
+    .sell-btn{
+        height: 40px;
+        width: 100px;
+        line-height: 40px;
+        color: $primary-color;
+        font-size: 0.9rem;
+        border: 1px solid $primary-color;
+        outline: none;
+        border-radius: 20px;
+        background-color: transparent;
+        &:active, &:focus{
+            outline: none;
+            box-shadow: none;
+        }
+        &:hover{
+            background-color: $primary-color;
+            color: white;
+        }
+    }
+
+    
+}

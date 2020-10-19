@@ -1,0 +1,56 @@
+@import '~sass/variables.scss';
+#sidebar-menu {
+    position: absolute;
+    background: rgba($color: #000000, $alpha: 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+
+    .menus {
+        background: white;
+        width: 220px;
+        height: 100%;
+
+        .profile {
+            display: flex;
+            align-items: center;
+            background: #f6f6f6;
+            padding: 15px 10px;
+            border-bottom: solid 1px lightgrey;
+
+            .avatar {
+                border-radius: 100px;
+            }
+
+            .name {
+                flex-grow: 1;
+                margin-left: 10px;
+                font-size: 15px;
+            }
+        }
+
+        ul {
+            list-style: none;
+            color: #2E6CBC;
+            font-size: 15px;
+
+            li {
+                margin-left: -30px;
+                padding: 10px 10px;
+                border-bottom: solid 1px #F6f6f6;
+                cursor: pointer;
+
+                img {
+                    margin-right: 10px;
+                    margin-top: -3px;
+                }
+            }
+        }
+    }
+
+    .close-area {
+        flex-grow: 1;
+    }
+}

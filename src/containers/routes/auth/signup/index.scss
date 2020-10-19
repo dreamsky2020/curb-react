@@ -1,0 +1,184 @@
+@import '~sass/variables.scss';
+#signup{
+    height: 100%;
+    width: 100%;
+
+    .navbar {
+        width: 100%;
+        height: 70px;
+        background-color: #2E6CBC;
+
+        .back-btn, .back-btn:hover {
+            color:white !important;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .tab {
+        display: flex;
+
+        .tab-btn {
+            flex-grow: 1;
+            text-align: center;
+            padding: 10px 0px;
+            border: solid 1px lightgrey;
+            cursor: pointer;
+            border-bottom: solid 3px $primary-color;
+
+            &.disabled {
+                color: grey;
+                background-color: #f6f6f6;
+                border-bottom: solid 1px lightgrey;
+            }
+        }
+
+        .tab-btn:nth-child(2) {
+            border-left: none;
+        }
+    }
+
+
+    .page-title {
+        color: white;
+        background-image: linear-gradient(to right, #FF9300, #FE8200);
+        padding: 5px 20px;
+        font-size: 15px;
+    }
+
+    
+    .alertMessage {
+        color: #721c24;
+        background-color: #f8d7da;
+        position: relative;
+        padding: .75rem 1.25rem;
+        border: 1px solid #f5c6cb;
+        border-radius: .25rem;
+        clear: both;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .content {
+        padding: 20px 30px;
+
+        button {
+            color: white;
+            width: 170px;
+            height: 40px;
+            border-radius: 100px;
+            background-image: linear-gradient(to right, #FF9300, #FE8200);
+            border: none;
+            outline: none;
+            transition: 0.3s;
+            font-size: 15px;
+            margin-top: 50px;
+        }
+
+    }
+
+    .form-group {
+        .control-label {
+            width: 100%;
+            font-size: 12px;
+            color: #585858;
+            padding-left: 13px
+        }
+
+        input {
+            width: 100%;
+            border-radius: 100px;
+            height: 35px;
+            border: 1px solid #dddddd;
+            padding: 0px 15px;
+            outline: none;
+            color: #111111;
+            font-size: 15px;
+        }
+    }
+
+    .password-hint {
+        font-size: 15px;
+        color: grey;
+        line-height: 25px;
+
+        .checked {
+            color: #111111;
+        }
+
+        i {
+            font-size: 20px;
+            color: #2E6CBC;
+        }
+    }
+
+    .description {
+        margin-top: 5px;
+        margin-bottom: 20px;
+        font-size: 15px;
+    }
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+    .Modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12);
+        border-radius: 4px;
+        padding: 24px;
+        max-width: 450px;
+
+        .title {
+            font-size: 20px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.87);
+        }
+
+        .footer {
+            text-align: right;
+            padding-top: 20px;
+            margin-right: -15px;
+            button {
+                border: none;
+                outline: none;
+                background-color: transparent;
+                padding: 6px 8px;
+                    min-width: 64px;
+                    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+                    line-height: 1.75;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    border-radius: 4px;
+    
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.08);
+                }
+            }
+        }
+
+    }
+}
+
+
+
+@media screen and (max-width: 500px){
+    .Overlay {
+            
+        .Modal {
+            width: 90%;
+        }
+    }
+}

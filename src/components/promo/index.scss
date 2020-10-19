@@ -1,0 +1,37 @@
+@import '~sass/variables.scss';
+#promo{
+
+    .mask{
+        position: absolute;
+        left: 0; 
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.8;
+        @media screen and(max-width: 768px){
+            width: 100% !important
+        }
+        
+    }
+    .browsing-btn{
+        height: 60px;
+        background-color: rgba($color: #000000, $alpha: 0);
+        border: 1px solid $primary-color;
+        width: 170px;
+        line-height: 60px;
+        color: $primary-color;
+        font-size: 1rem;
+        outline: none;
+
+        &:hover{
+            background-color: $primary-color;
+            color: white;
+        }
+
+        &:active, &:focus{
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}

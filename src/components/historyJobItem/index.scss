@@ -1,0 +1,33 @@
+@import '~sass/variables.scss';
+#history-job-item{
+    display: flex;
+    border-bottom: solid 1px lightgrey;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+        vertical-align: middle;
+    }
+
+    .job-details {
+        flex-grow: 1;
+        font-size: 13px;
+        line-height: 22px;
+        margin-left: 15px;
+        color: rgba(0, 0, 0, 0.54);
+
+        .title {
+            font-size: 15px;
+            color: #111111;
+
+            i {
+                font-style: normal;
+
+                &.cancelled {
+                    color: #d42928;
+                }
+            }
+        }
+    }
+}

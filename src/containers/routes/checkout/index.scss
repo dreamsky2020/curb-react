@@ -1,0 +1,54 @@
+@import '~sass/variables.scss';
+#checkout{
+    margin-top: 80px;
+    .title{
+        width: auto;
+        &::after{
+            display: block;
+            content: '';
+            height: 3px;
+            margin-top: 10px;
+            width: 150px;
+            background-color: $primary-color;
+        }
+    }
+
+    .photo{
+        display: flex;
+        justify-content: center;
+        height: auto;
+        img{
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .bid-price{
+        p:first-child{
+            font-size: 2rem;
+        }
+    }
+
+    .checkout-form{
+        min-height: 100%;
+        background-color: $second-bg-color;
+        padding: 30px;
+        .size{
+            width: 100%;
+        }
+        .divider{
+            border-color: #b0b0b0;
+            margin: 15px 0;
+        }
+
+        button{
+            min-height: 50px;
+            &.paypal-btn{
+                background-color: #1b69a8;
+                border: none;
+                color: white;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+@import '~sass/variables.scss';
+#feature-sellers{
+    
+    .sellers{
+        .seller-item{
+            cursor: pointer;
+            text-align: center;
+            .photo{
+                position: relative;
+                width: 200px;
+                height: 200px;
+                border-radius: 100%;
+                overflow: hidden;
+                @media screen and(max-width: 500px){
+                    width: 150px;
+                    height: 150px;
+                    .mask{
+                        display: none;
+                    }
+                    .ctl{
+                        bottom: 0 !important;
+                        opacity: 1 !important;
+                        width: 150px !important;
+                        height: 50px !important;
+                        font-size: 1.2rem !important;
+                    }
+                }
+
+                img {
+                    width: 100%;
+                    transition: transform .5s;
+                }
+                .ctl{
+                    padding-top: 5px;
+                    position: absolute;
+                    font-size: 1.5rem;
+                    color: white;
+                    bottom: -60px;
+                    opacity: 0;
+                    left: 0; width: 200px;
+                    height: 60px;
+                    background-color: rgba($color: #000000, $alpha: 0.8);
+                    transition: all;
+                    transition-duration: 0.5s;
+                }
+                .mask{
+                    position: absolute;
+                    left: 50%; 
+                    top: 50%;
+                    width: 0px;
+                    height: 0px;
+                    transform: translate(-50%, -50%);
+                    border-radius: 100%;
+                    background-color: rgba($color: #fff, $alpha: 0.1);
+                    transition: all;
+                    transition-duration: 0.5s;
+                }
+            }
+            &:hover{
+                .name{
+                    color: $primary-color !important;
+                }
+                .photo{
+                    img{
+                        transform: scale(1.2);
+                        transition: transform .5s;
+                    }
+                    .ctl{
+                        bottom: 0;
+                        opacity: 1;
+                        transition: all;
+                        transition-duration: 0.5s;
+                    }
+                    .mask{
+                        width: 100%;
+                        height: 100%;
+                        transition: all;
+                        transition-duration: 0.5s;
+                    }
+                }
+            }
+            p{
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

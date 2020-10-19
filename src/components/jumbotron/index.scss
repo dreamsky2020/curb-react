@@ -1,0 +1,71 @@
+@import '~sass/variables.scss';
+#jumbotron{
+    .slid-screen{
+        width: 100%;
+        height: 100vh;
+        background-color: $second-bg-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 100%;
+        }
+        .bid-btn{
+            height: 60px;
+            background-color: $primary-color;
+            width: 150px;
+            line-height: 60px;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+
+            &:active, &:focus{
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        .browsing-btn{
+            height: 60px;
+            background-color: rgba($color: #000000, $alpha: 0);
+            border: 1px solid $primary-color;
+            width: 150px;
+            line-height: 60px;
+            color: $primary-color;
+            font-size: 1rem;
+            outline: none;
+
+            &:hover{
+                background-color: $primary-color;
+                color: white;
+            }
+
+            &:active, &:focus{
+                outline: none;
+                box-shadow: none;
+            }
+        }
+        @media screen and(max-width: 768px){
+            height: auto !important;
+            padding-bottom: 50px;
+        }
+
+    }
+}
+
+.carousel {
+    .control-dots{
+        .dot {
+            background-color: $second-bg-color;
+            border: 1px solid $primary-color;
+            box-shadow: none;
+
+            &.selected{
+                background-color: $primary-color;
+            }
+        }
+    }
+}
+
+
