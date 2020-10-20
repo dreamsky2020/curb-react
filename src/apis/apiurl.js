@@ -18,7 +18,7 @@ export default {
     /**
      * Job 
      */ 
-
+    GETCATEGORYFROMZIP_URL: `https://08x56m6svf.execute-api.us-west-2.amazonaws.com/stage/cit/category/zip/`,
      JOBCREATE_URL: `${ process.env.REACT_APP_SERVER_URL}/job/create`,
      JOBHISTORY_URL: `https://search-cit-es-7jyehkyzkjldsjnmezsbihh7mm.us-west-2.es.amazonaws.com/stage-job/_search`,
 }

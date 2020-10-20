@@ -108,6 +108,10 @@ a{
     clear: both;
 }
 
+.loading-spinner {
+    height: 100%;
+}
+
 @media screen and (max-width: 500px){
     #route-content {
         width: 100vw;

@@ -8,6 +8,10 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import Modal from 'react-modal';
 import SidebarMenu from 'components/sidebar';
+import {connect} from 'react-redux';
+import  { set_loading, remove_loading } from '../../../store/actions/load'
+import { getCategoryFromZip } from 'apis/job';
+
 
 import './index.scss'
 
@@ -108,46 +112,67 @@ class Home extends React.Component {
     handleSetJobLocation() {
         const { job_address, center } = this.state;
         if(Object.keys(job_address).length !== 0 && job_address.streetNumber !== ""){
+
+            let headers = { 
+                'Content-Type': 'application/json',
+                'x-api-key': 'KEEkjpOrvK7NAPUIhtj56cvVG8Bmawo9LtfLfcE5'
+            };            
+
             let data = JSON.parse(localStorage.getItem("##GO_TRASHY_WEB_CLIENT_STORE##"));
-            data.currentJob = { 
-                address: job_address ,
-                coordinates: center.lat + "," + center.lng 
-            };
-            data.completedJob = null;
-            let clientId = data.jobDetails.clientId;
-            data.jobDetails = {
-                address: null,
-                amount: 0,
-                apartmentNumber: "",
-                areItemsInside: false,
-                areItemsOutside: false,
-                areStairsNeeded: false,
-                pictures: null,
-                bids: [],
-                chips: [],
-                clientId: "",
-                complimentsNumber: null,
-                isElevatorNeeded: false,
-                jobCategories: [],
-                jobCategoryId: "",
-                jobCategory: "",
-                jobId: "",
-                jobItems: null,
-                note: "",
-                providerId: "",
-                selectedJobCategory: "0",
-                timeSlots: [],
-                subCategories: [],
-            }
-            data.jobDetails.address = job_address;
-            data.jobDetails.clientId = clientId;
 
-            // test purpose
-            if(clientId === "") data.jobDetails.clientId="praveen@j2.com";
-            // ------
+            this.props.set_loading();
 
-            localStorage.setItem('##GO_TRASHY_WEB_CLIENT_STORE##', JSON.stringify(data));
-            this.props.history.push('/job-details');
+            getCategoryFromZip(job_address.zipCode, headers)
+            .then(res =>{
+                
+                this.props.remove_loading();
+                
+                data.jobCategories = res;
+                             
+                data.currentJob = { 
+                    address: job_address ,
+                    coordinates: center.lat + "," + center.lng 
+                };
+                data.completedJob = null;
+                let clientId = data.jobDetails.clientId;
+                data.jobDetails = {
+                    address: null,
+                    amount: 0,
+                    apartmentNumber: "",
+                    areItemsInside: false,
+                    areItemsOutside: false,
+                    areStairsNeeded: false,
+                    pictures: null,
+                    bids: [],
+                    chips: [],
+                    clientId: "",
+                    complimentsNumber: null,
+                    isElevatorNeeded: false,
+                    jobCategoryId: "",
+                    jobCategory: "",
+                    jobId: "",
+                    jobItems: null,
+                    note: "",
+                    providerId: "",
+                    selectedJobCategory: "0",
+                    timeSlots: [],
+                    subCategories: [],
+                }
+                data.jobDetails.address = job_address;
+                data.jobDetails.clientId = clientId;
+
+                // test purpose
+                if(clientId === "") data.jobDetails.clientId="praveen@j2.com";
+                // ------
+
+
+                localStorage.setItem('##GO_TRASHY_WEB_CLIENT_STORE##', JSON.stringify(data));
+                this.props.history.push('/job-details');
+            })
+            .catch(err => {
+                this.props.remove_loading();
+                console.log(err);
+            });
         }
         else {
             this.setState({modalIsOpen: true});
@@ -166,9 +191,10 @@ class Home extends React.Component {
 
     render() {
 
-        const { show_sidebar } = this.state;
+        const { show_sidebar} = this.state;
 
         return (
+            
             <div id="home">
                 <div className="navbar">
                     <span className="back-btn" onClick={() => this.setState({ show_sidebar: true })}><i className="fa fa-bars"></i></span>
@@ -252,6 +278,7 @@ class Home extends React.Component {
                     <SidebarMenu onClose={() => this.setState({ show_sidebar: false })} />
                 }
             </div>
+            
         );
     }
 }
@@ -263,8 +290,6 @@ class Home extends React.Component {
 //     return {}
 // };
 
-// export default withRouter(connect(mapStateToProps, {
-    
-// })(Home));
-
-export default withRouter(Home);
+export default withRouter(connect(null, {
+    set_loading, remove_loading
+})(Home));

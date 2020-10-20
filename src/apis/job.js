@@ -1,6 +1,12 @@
 import axios from 'axios';
 import API_URL from './apiurl'
 
+export const getCategoryFromZip = async (zip, headers) => {
+
+    return await axios.get(`${API_URL.GETCATEGORYFROMZIP_URL + zip}`, { headers })
+        .then(data => data.data)
+        .catch(error => { throw error.response.data.error.description });
+};
 
 export const jobCreate = async (params, headers) => {
 

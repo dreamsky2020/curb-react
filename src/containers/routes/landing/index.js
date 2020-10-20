@@ -33,7 +33,6 @@ class Landing extends React.Component {
                 clientId: "",
                 complimentsNumber: null,
                 isElevatorNeeded: false,
-                jobCategories: [],
                 jobCategoryId: "",
                 jobCategory: "",
                 jobId: "",
@@ -43,7 +42,8 @@ class Landing extends React.Component {
                 selectedJobCategory: "0",
                 timeSlots: [],
                 subCategories: [],
-            }
+            },
+            jobCategories: [],
         }
         localStorage.setItem('##GO_TRASHY_WEB_CLIENT_STORE##', JSON.stringify(data));
     }

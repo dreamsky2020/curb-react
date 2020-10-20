@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
+import  { set_loading, remove_loading } from '../../../../store/actions/load'
 import InputMask from 'react-input-mask';
 import { register, cardAuthorize } from '../../../../apis/auth';
 import Modal from 'react-modal';
@@ -137,14 +138,17 @@ class SignUp extends React.Component {
             data.jobDetails.clientId = email;
             localStorage.setItem("##GO_TRASHY_WEB_CLIENT_STORE##", JSON.stringify(data));
             
+            this.props.set_loading();
             register(params, headers)
             .then(data => {
+                this.props.remove_loading();
                 console.log(data);
                 this.setState({
                     show_personal: false
                 });
             })
             .catch(error => this.setState({error: JSON.stringify(error)}, () => {
+                this.props.remove_loading();
                 this.openModal();
             }));
             
@@ -205,12 +209,15 @@ class SignUp extends React.Component {
         };
 
 
+        this.props.set_loading();
         cardAuthorize(params, headers)
         .then(data => {
+            this.props.remove_loading();
             console.log(data);
             this.props.history.push('/signin');
         })
         .catch(error => this.setState({error: JSON.stringify(error)}, () => {
+            this.props.remove_loading();
             this.openModal();
         }));
 
@@ -465,5 +472,6 @@ const mapStateToProps = (state) => ({
 })
 
 export default withRouter(connect(mapStateToProps, {
-    
+    set_loading, remove_loading
 })(SignUp));
+

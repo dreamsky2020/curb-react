@@ -12,6 +12,8 @@ class JobDetails extends React.Component {
         super(props);
 
         this.state = {
+            jobCategories: [],
+
             yard_debris: false,
             count_category: false,
             bid_category: false,
@@ -59,6 +61,8 @@ class JobDetails extends React.Component {
 
     componentDidMount() {
         let data = JSON.parse( localStorage.getItem("##GO_TRASHY_WEB_CLIENT_STORE##") );
+
+        this.setState({jobCategories: data.jobCategories});
         
         if(data.jobDetails.jobCategory === "") {
             this.setState({yard_debris: true});
@@ -339,7 +343,7 @@ class JobDetails extends React.Component {
     }
 
     render() {
-
+        const { jobCategories } = this.state;
         const { yard_debris, count_category, bid_category, jc_new_usa, wrs, mixed_junk, imagePreviewUrls } = this.state;
         const { yard_debris_big_count, yard_debris_small_count, bag_count, wrs_medium_count, wrs_small_count, wrs_couch_count } = this.state;
         const { areItemsOutside, areItemsInside, isElevatorNeeded, areStairsNeeded } = this.state;
@@ -370,67 +374,90 @@ class JobDetails extends React.Component {
                             </div>
                             <div className="category-list scrollable">
                                <div className="horizontal-scroll">
-                                   <button className={`${yard_debris ? "button-selected": null }`} onClick={() => this.changeJobCategory("yard_debris")}>
-                                       <span>
-                                            {yard_debris ?
-                                                <img src="/images/yard-debris-active.png" alt="yard debris active" />
-                                                :
-                                                <img src="/images/yard-debris.png" alt="yard debris active" />
-                                            }
+                                   {jobCategories.map((jobCategory) => 
+                                    <React.Fragment key={jobCategory.id}>
+                                        {jobCategory.name === "Yard Debris" &&
+                                            <button className={`${yard_debris ? "button-selected": null }`} onClick={() => this.changeJobCategory("yard_debris")}>
+                                                <span>
+                                                    {yard_debris ?
+                                                        <img src="/images/yard-debris-active.png" alt="yard debris active" />
+                                                        :
+                                                        <img src="/images/yard-debris.png" alt="yard debris active" />
+                                                    }
 
-                                           <p>Yard Debris</p>
-                                       </span>
-                                   </button>
-                                   <button className={`${count_category ? "button-selected": null }`}  onClick={() => this.changeJobCategory("count_category")}>
-                                       <span>
-                                           {count_category ? 
-                                               <img src="/images/quick-haul-active.png" alt="quick-haul" />
-                                               :
-                                               <img src="/images/quick-haul.png" alt="quick-haul" />
-                                           }
-                                           <p>Count Category</p>
-                                       </span>
-                                   </button>
-                                   <button className={`${bid_category ? "button-selected": null }`}  onClick={() => this.changeJobCategory("bid_category")}>
-                                       <span>
-                                            {bid_category ? 
-                                               <img src="/images/quick-haul-active.png" alt="quick-haul" />
-                                               :
-                                               <img src="/images/quick-haul.png" alt="quick-haul" />
-                                            }
-                                           <p>Bid Category</p>
-                                       </span>
-                                   </button>
-                                   <button className={`${jc_new_usa ? "button-selected": null }`} onClick={() => this.changeJobCategory("jc_new_usa")}>
-                                       <span>
-                                            {jc_new_usa ? 
-                                               <img src="/images/quick-haul-active.png" alt="quick-haul" />
-                                               :
-                                               <img src="/images/quick-haul.png" alt="quick-haul" />
-                                            }
-                                           <p>JC new USA</p>
-                                       </span>
-                                   </button>
-                                   <button className={`${wrs ? "button-selected": null }`} onClick={() => this.changeJobCategory("wrs")}>
-                                       <span>
-                                            {wrs ? 
-                                               <img src="/images/quick-haul-active.png" alt="quick-haul" />
-                                               :
-                                               <img src="/images/quick-haul.png" alt="quick-haul" />
-                                            }
-                                           <p>WRS</p>
-                                       </span>
-                                   </button>
-                                   <button className={`${mixed_junk ? "button-selected": null }`} onClick={() => this.changeJobCategory("mixed_junk")}>
-                                       <span>
-                                            {mixed_junk ? 
-                                               <img src="/images/quick-haul-active.png" alt="quick-haul" />
-                                               :
-                                               <img src="/images/quick-haul.png" alt="quick-haul" />
-                                            }
-                                           <p>Mixed Junk</p>
-                                       </span>
-                                   </button>
+                                                    <p>Yard Debris</p>
+                                                </span>
+                                            </button>
+                                        }
+
+                                        {jobCategory.name === "Count Category" &&
+                                            <button className={`${count_category ? "button-selected": null }`}  onClick={() => this.changeJobCategory("count_category")}>
+                                                <span>
+                                                    {count_category ? 
+                                                        <img src="/images/quick-haul-active.png" alt="quick-haul" />
+                                                        :
+                                                        <img src="/images/quick-haul.png" alt="quick-haul" />
+                                                    }
+                                                    <p>Count Category</p>
+                                                </span>
+                                            </button>
+                                        }
+
+                                        {jobCategory.name === "Bid Category" &&
+                                            <button className={`${bid_category ? "button-selected": null }`}  onClick={() => this.changeJobCategory("bid_category")}>
+                                                <span>
+                                                    {bid_category ? 
+                                                        <img src="/images/quick-haul-active.png" alt="quick-haul" />
+                                                        :
+                                                        <img src="/images/quick-haul.png" alt="quick-haul" />
+                                                    }
+                                                    <p>Bid Category</p>
+                                                </span>
+                                            </button>
+                                        }
+
+                                        {jobCategory.name === "JC new USA" &&
+                                            <button className={`${jc_new_usa ? "button-selected": null }`} onClick={() => this.changeJobCategory("jc_new_usa")}>
+                                                <span>
+                                                    {jc_new_usa ? 
+                                                        <img src="/images/quick-haul-active.png" alt="quick-haul" />
+                                                        :
+                                                        <img src="/images/quick-haul.png" alt="quick-haul" />
+                                                    }
+                                                    <p>JC new USA</p>
+                                                </span>
+                                            </button>
+                                        }
+
+                                        {jobCategory.name === "WRS" &&
+                                            <button className={`${wrs ? "button-selected": null }`} onClick={() => this.changeJobCategory("wrs")}>
+                                                <span>
+                                                    {wrs ? 
+                                                        <img src="/images/quick-haul-active.png" alt="quick-haul" />
+                                                        :
+                                                        <img src="/images/quick-haul.png" alt="quick-haul" />
+                                                    }
+                                                    <p>WRS</p>
+                                                </span>
+                                            </button>
+                                        }
+
+                                        {jobCategory.name === "Mixed Junk" &&
+                                            <button className={`${mixed_junk ? "button-selected": null }`} onClick={() => this.changeJobCategory("mixed_junk")}>
+                                                <span>
+                                                    {mixed_junk ? 
+                                                        <img src="/images/quick-haul-active.png" alt="quick-haul" />
+                                                        :
+                                                        <img src="/images/quick-haul.png" alt="quick-haul" />
+                                                    }
+                                                    <p>Mixed Junk</p>
+                                                </span>
+                                            </button>
+                                        }
+                                        
+                                    </React.Fragment>
+                                    )}
+                                   
                                </div>
                             </div>
                         </div>
